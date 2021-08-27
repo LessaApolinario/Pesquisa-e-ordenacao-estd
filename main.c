@@ -1,26 +1,18 @@
 #include <stdio.h>
 #include "./include/pesquisa.h"
-#define SIZE 4
+#define SIZE 2
 
 int main() {
-  int v[SIZE];
+  char nome[50], CPF[14];
+  int idade[SIZE];
+  float salario[SIZE];
   int i, valor;
 
-  printf("Preencha o vetor: \n");
-  for (i = 0; i < SIZE; i++) {
-    scanf("%d", &v[i]);
-  }
+  cadastrarFuncionario(nome, CPF, idade, salario);
 
-  bubble(v, SIZE);
+  printf("\n\n");
 
-  i = 0;
-
-  printf("Novo array: \n");
-  for (i = 0; i < SIZE; i++) {
-    printf("%d ", v[i]);
-  }
-
-  printf("\n");
+  consultarFuncionarios(nome, CPF, idade, salario);
 
   return 0;
 }
