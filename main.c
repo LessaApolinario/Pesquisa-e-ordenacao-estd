@@ -3,12 +3,12 @@
 #define SIZE 1
 
 int main() {
-  char nome[SIZE][100], CPF[SIZE][14];
-  int idade[SIZE];
-  float salario[SIZE];
+  char nome[SIZE][100], CPF[SIZE][14]; // matrizes de strings
+  int idade[SIZE]; // vetor de idades
+  float salario[SIZE]; // vetor de salários
   int i, op;
   int opcao;
-  char cpfCliente[14];
+  char cpfCliente[14]; // cpf a ser pesquisado
 
   do {
     menu();
@@ -31,7 +31,7 @@ int main() {
         printf("Informe o CPF do cliente: ");
         scanf("%s", cpfCliente);
 
-        // consultarFuncionariosPorCPFBinaria();
+        consultarFuncionariosPorCPFBinaria(CPF, SIZE, cpfCliente);
       } else if (opcao == 1) {
         printf("Informe o CPF do cliente: ");
         scanf("%s", cpfCliente);

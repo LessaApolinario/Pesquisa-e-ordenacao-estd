@@ -144,13 +144,37 @@ void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[
   }
 }
 
-void consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[14]) {
+int consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[14]) {
   int i;
 
   for (i = 0; i < tam; i++) {
     if (strcmp(vetCPF[i], CPF) == 0) {
-      printf("O funcionário existe com o CPF %s existe.\n", vetCPF[i]);
+      printf("O funcionário existe com o CPF %s existe na posição %d.\n", vetCPF[i], i);
       break;
     }
   }
+
+  return -1;
+}
+
+int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]) {
+  int inicio, fim, meio;
+
+  inicio = 0;
+  fim = tam - 1;
+
+  do {
+    meio = (inicio + fim) / 2;
+
+    if (strcmp(vetCPF[meio], CPF) == 0) {
+      printf("O funcionário existe com o CPF %s na posição %d", vetCPF[meio], meio);
+      return meio;
+    } else if (strcmp(vetCPF[meio], CPF) == 1) {
+      inicio = meio + 1;
+    } else {
+      fim = meio - 1;
+    }
+  } while (inicio <= fim);
+
+  return -1;
 }
