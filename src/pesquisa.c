@@ -73,8 +73,39 @@ void quick(int v[], int tam) {
   quick(&v[a], tam - a);
 }
 
+int pesquisa(int vet[], int tam, int x) {
+  int i;
+  int achou = 0; // false
+
+  printf("Digite o valor a procurar: ");
+  scanf("%d", &x);
+
+  for (i = 0; i < tam; i++) {
+    if (vet[i] == x) {
+      achou = 1;
+
+      break;
+    }
+  }
+
+  if (achou == 1) {
+    printf("%d achado na posição %d\n", x, i);
+  } else {
+    printf("%d não encontrado\n", x);
+  }
+}
+
+void menu() {
+  printf("\n==========Empresa X==========\n");
+  printf("| 1 - Cadastrar funcionário\n");
+  printf("| 2 - Exibir funcionários por nome\n");
+  printf("| 3 - Consultar funcionário por CPF\n");
+  printf("| 4 - Atualizar dados de um funcionário\n");
+  printf("| 5 - Sair\n");
+}
+
 void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
-  int i, j;
+  int i;
   Func *f = (Func *)malloc(sizeof(Func));
 
   for (i = 0; i < SIZE; i++) {
@@ -101,8 +132,7 @@ void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[]
 }
 
 void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
-  int i, j = 0;
-  Func f;
+  int i;
 
   for (i = 0; i < SIZE; i++) {
     printf("--------------------\n");
