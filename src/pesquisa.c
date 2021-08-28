@@ -149,7 +149,7 @@ int consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[1
 
   for (i = 0; i < tam; i++) {
     if (strcmp(vetCPF[i], CPF) == 0) {
-      printf("O funcionário existe com o CPF %s existe na posição %d.\n", vetCPF[i], i);
+      printf("\nO funcionário existe com o CPF %s existe na posição %d.\n", vetCPF[i], i);
       break;
     }
   }
@@ -166,12 +166,15 @@ int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]) {
   do {
     meio = (inicio + fim) / 2;
 
-    if (strcmp(vetCPF[meio], CPF) == 0) {
-      printf("O funcionário existe com o CPF %s na posição %d", vetCPF[meio], meio);
+    if (strcmp(CPF, vetCPF[meio]) == 0) {
+      // Se a string CPF for igual a string vetCPF[i]
+      printf("\nO funcionário existe com o CPF %s na posição %d.\n", vetCPF[meio], meio);
       return meio;
-    } else if (strcmp(vetCPF[meio], CPF) == 1) {
+    } else if (strcmp(CPF, vetCPF[meio]) == 1) {
+      // se a string CPF for maior
       inicio = meio + 1;
     } else {
+      // se a string CPF for menor, ou seja, o retorno de strcmp é -1
       fim = meio - 1;
     }
   } while (inicio <= fim);
