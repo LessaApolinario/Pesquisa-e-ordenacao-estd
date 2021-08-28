@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include "./include/pesquisa.h"
-#define SIZE 2
+#define SIZE 1
 
 int main() {
   char nome[SIZE][100], CPF[SIZE][14];
   int idade[SIZE];
   float salario[SIZE];
   int i, op;
+  int opcao;
+  char cpfCliente[14];
 
   do {
     menu();
@@ -22,7 +24,20 @@ int main() {
       break;
 
     case 3:
-      // consultarFuncionariosPorCPF();
+      printf("Pesquisa binária (0) ou sequencial (1)? ");
+      scanf("%d", &opcao);
+
+      if (opcao == 0) {
+        printf("Informe o CPF do cliente: ");
+        scanf("%s", cpfCliente);
+
+        // consultarFuncionariosPorCPFBinaria();
+      } else if (opcao == 1) {
+        printf("Informe o CPF do cliente: ");
+        scanf("%s", cpfCliente);
+
+        consultarFuncionariosPorCPFSequencial(CPF, SIZE, cpfCliente);
+      }
       break;
 
     case 4:

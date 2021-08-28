@@ -19,3 +19,7 @@ void menu();
 void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
 
 void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
+
+void consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[]);
+
+void consultarFuncionariosPorCPFBinaria(char vet[][14], int tam, char CPF[]);

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../include/pesquisa.h"
-#define SIZE 2
+#define SIZE 1
 
 int bubble(int vet[], int size) {
   int i;
@@ -141,5 +141,16 @@ void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[
     printf("Idade = %d\n", vetIdade[i]);
     printf("Salário = %.2f\n", vetSalario[i]);
     printf("--------------------\n");
+  }
+}
+
+void consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[14]) {
+  int i;
+
+  for (i = 0; i < tam; i++) {
+    if (strcmp(vetCPF[i], CPF) == 0) {
+      printf("O funcionário existe com o CPF %s existe.\n", vetCPF[i]);
+      break;
+    }
   }
 }
