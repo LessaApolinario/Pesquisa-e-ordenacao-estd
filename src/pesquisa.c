@@ -2,19 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../include/pesquisa.h"
-#define SIZE 1
+#define SIZE 4
 
-int bubble(int vet[], int size) {
+int bubble(char vetNome[][100], int tam) {
   int i;
   int j;
-  int aux;
+  char aux[100];
 
-  for (j = 1; j < size; j++) {
-    for (i = 0; i < size; i++) {
-      if (vet[i] > vet[i + 1]) {
-        aux = vet[i];
-        vet[i] = vet[i + 1];
-        vet[i + 1] = aux;
+  for (j = 0; j < tam - 1; j++) {
+    for (i = j + 1; i < tam; i++) {
+      if (strcmp(vetNome[j], vetNome[i]) > 0) {
+        strcpy(aux, vetNome[j]);
+        strcpy(vetNome[j], vetNome[i]);
+        strcpy(vetNome[i], aux);
       }
     }
   }
@@ -131,6 +131,14 @@ void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[]
   }
 }
 
+void consultarFuncionariosPorNome(char vetNome[][100]) {
+  int i;
+
+  for (i = 0; i < SIZE; i++) {
+    printf("\nNome: %s\n\n", vetNome[i]);
+  }
+}
+
 void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
   int i;
 
@@ -170,7 +178,7 @@ int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]) {
       // Se a string CPF for igual a string vetCPF[i]
       printf("\nO funcionário existe com o CPF %s na posição %d.\n", vetCPF[meio], meio);
       return meio;
-    } else if (strcmp(CPF, vetCPF[meio]) == 1) {
+    } else if (strcmp(CPF, vetCPF[meio]) > 0) {
       // se a string CPF for maior
       inicio = meio + 1;
     } else {

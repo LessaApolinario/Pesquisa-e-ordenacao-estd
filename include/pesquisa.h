@@ -6,7 +6,7 @@ struct funcionario {
 };
 typedef struct funcionario Func;
 
-int bubble(int vet[], int size);
+int bubble(char vetNome[][100], int tam);
 
 int busca(int vet[], int tam, int x);
 
@@ -19,6 +19,8 @@ void menu();
 void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
 
 void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
+
+void consultarFuncionariosPorNome(char vetNome[][100]);
 
 int consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[]);
 

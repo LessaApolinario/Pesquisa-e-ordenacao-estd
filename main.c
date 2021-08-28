@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "./include/pesquisa.h"
-#define SIZE 1
+#define SIZE 4
 
 int main() {
   char nome[SIZE][100], CPF[SIZE][14]; // matrizes de strings
@@ -20,7 +20,8 @@ int main() {
       break;
 
     case 2:
-      // consultarFuncionariosPorNome();
+      bubble(nome, SIZE);
+      consultarFuncionariosPorNome(nome);
       break;
 
     case 3:
