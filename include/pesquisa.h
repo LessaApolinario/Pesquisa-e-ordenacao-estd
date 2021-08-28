@@ -12,8 +12,6 @@ int busca(int vet[], int tam, int x);
 
 void quick(int v[], int tam);
 
-void cadastrarFuncionario(char vetNome[], char vetCPF[], int vetIdade[], float vetSalario[]);
+void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
 
-void consultarFuncionarios(char vetNome[], char vetCPF[], int vetIdade[], float vetSalario[]);
-
-void printStringArray(char vet[]);
+void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);

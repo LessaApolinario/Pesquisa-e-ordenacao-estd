@@ -3,7 +3,7 @@
 #define SIZE 2
 
 int main() {
-  char nome[50], CPF[14];
+  char nome[SIZE][100], CPF[SIZE][14];
   int idade[SIZE];
   float salario[SIZE];
   int i, valor;

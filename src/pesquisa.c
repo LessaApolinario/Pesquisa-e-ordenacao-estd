@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "../include/pesquisa.h"
 #define SIZE 2
@@ -72,64 +73,43 @@ void quick(int v[], int tam) {
   quick(&v[a], tam - a);
 }
 
-void cadastrarFuncionario(char vetNome[], char vetCPF[], int vetIdade[], float vetSalario[]) {
-  int i;
-  Func f;
+void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
+  int i, j;
+  Func *f = (Func *)malloc(sizeof(Func));
 
   for (i = 0; i < SIZE; i++) {
     printf("Informe o nome do funcionário: ");
-    //scanf("%s", f.nome);
-    //fgets(f.nome, 50, stdin);
-    scanf(" %[^\t\n]s", f.nome);
+    scanf(" %[^\t\n]s", f->nome);
+    strcpy(vetNome[i], f->nome);
     setbuf(stdin, NULL);
-    strncpy(vetNome, f.nome, 50);
-
 
     printf("Informe o CPF do funcionário: ");
-    //scanf("%s", f.CPF);
-    //fgets(f.CPF, 50, stdin);
-    scanf(" %[^\t\n]s", f.CPF);
+    scanf(" %[^\t\n]s", f->CPF);
+    strcpy(vetCPF[i], f->CPF);
     setbuf(stdin, NULL);
-    strncpy(vetCPF, f.CPF, 14);
 
     printf("Informe a idade do funcionário: ");
-    scanf("%d", &f.idade);
+    scanf("%d", &f->idade);
 
-    vetIdade[i] = f.idade;
+    vetIdade[i] = f->idade;
 
     printf("Informe o salário do funcionário: ");
-    scanf("%f", &f.salario);
+    scanf("%f", &f->salario);
 
-    vetSalario[i] = f.salario;
+    vetSalario[i] = f->salario;
   }
 }
 
-void consultarFuncionarios(char vetNome[], char vetCPF[], int vetIdade[], float vetSalario[]) {
+void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
   int i, j = 0;
   Func f;
 
   for (i = 0; i < SIZE; i++) {
     printf("--------------------\n");
-    // printf("Nome: %s\n", vetNome[i]);
-    // printf("CPF: %s\n", vetCPF[i]);
-    printf("Nome: ");
-    printStringArray(vetNome);
-
-    printf("CPF: ");
-    printStringArray(vetCPF);
-
+    printf("Nome: %s\n", vetNome[i]);
+    printf("CPF: %s\n", vetCPF[i]);
     printf("Idade = %d\n", vetIdade[i]);
     printf("Salário = %.2f\n", vetSalario[i]);
     printf("--------------------\n");
   }
-}
-
-void printStringArray(char vet[]) {
-  int i;
-
-  for (i = 0; vet[i] != '\0'; i++) {
-    printf("%c", vet[i]);
-  }
-
-  printf("\n");
 }
