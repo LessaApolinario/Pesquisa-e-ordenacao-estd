@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../include/pesquisa.h"
-#define SIZE 4
+#define SIZE 1
 
 int bubble(char vetNome[][100], int tam) {
   int i;
@@ -42,43 +42,44 @@ int busca(int vet[], int tam, int x) {
   return -1;
 }
 
-void quick(int v[], int tam) {
-  int a = 1, b = tam - 1, pivo;
-  pivo = v[0];
+void quick(char vetNome[][100], int tam) {
+  int a = 1, b = tam - 1;
+  char pivo[100];
+
+  strcpy(pivo, vetNome[0]);
 
   if (tam <= 1)
     return;
 
   while (a <= b) {
-    printf("\n A: %d, B: %d", a, b);
-    while (v[a] < pivo && a < tam) {
+    while (strcmp(pivo, vetNome[a]) == -1 && a < tam) {
       a++;
     }
-    while (v[b] > pivo && b > 0) {
+    while (strcmp(vetNome[b], pivo) == 1 && b > 0) {
       b--;
     }
     if (a < b) {
-      int aux = v[b];
-      v[b] = v[a];
-      v[a] = aux;
+      char aux[100];
+
+      strcpy(aux, vetNome[b]);
+      strcpy(vetNome[b], vetNome[a]);
+      strcpy(vetNome[a], aux);
+
       a++;
       b--;
     }
   }
 
-  v[0] = v[b];
-  v[b] = pivo;
+  strcpy(vetNome[0], vetNome[b]);
+  strcpy(vetNome[b], pivo);
 
-  quick(v, b);
-  quick(&v[a], tam - a);
+  quick(vetNome, b);
+  quick(&vetNome[a], tam - a);
 }
 
 int pesquisa(int vet[], int tam, int x) {
   int i;
   int achou = 0; // false
-
-  printf("Digite o valor a procurar: ");
-  scanf("%d", &x);
 
   for (i = 0; i < tam; i++) {
     if (vet[i] == x) {
@@ -90,8 +91,12 @@ int pesquisa(int vet[], int tam, int x) {
 
   if (achou == 1) {
     printf("%d achado na posição %d\n", x, i);
+
+    return 0;
   } else {
     printf("%d não encontrado\n", x);
+
+    return 1;
   }
 }
 
@@ -101,7 +106,8 @@ void menu() {
   printf("| 2 - Exibir funcionários por nome\n");
   printf("| 3 - Consultar funcionário por CPF\n");
   printf("| 4 - Atualizar dados de um funcionário\n");
-  printf("| 5 - Sair\n");
+  printf("| 5 - Consultar funcionários\n");
+  printf("| 6 - Sair\n");
 }
 
 void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
@@ -135,7 +141,7 @@ void consultarFuncionariosPorNome(char vetNome[][100]) {
   int i;
 
   for (i = 0; i < SIZE; i++) {
-    printf("\nNome: %s\n\n", vetNome[i]);
+    printf("\nNome: %s\n", vetNome[i]);
   }
 }
 
@@ -188,4 +194,77 @@ int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]) {
   } while (inicio <= fim);
 
   return -1;
+}
+
+void atualizarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
+  char nome[100], CPF[14];
+  int idade;
+  float salario;
+  int i;
+
+  for (i = 0; i < SIZE; i++) {
+    printf("Informe o nome do funcionário a atualizar: ");
+    scanf(" %[^\t\n]s", nome);
+    setbuf(stdin, NULL);
+
+    printf("Informe o CPF do funcionário: ");
+    scanf(" %[^\t\n]s", CPF);
+    setbuf(stdin, NULL);
+
+    if (strcmp(vetNome[i], nome) == 0 && strcmp(vetCPF[i], CPF) == 0) {
+      if (pesquisaIdade(vetIdade, SIZE, vetIdade[i]) == 1) {
+        printf("Informe a nova idade do funcionário: ");
+        scanf("%d", &idade);
+
+        vetIdade[i] = idade;
+      }
+
+      if (pesquisaSalario(vetSalario, SIZE, vetSalario[i]) == 1) {
+        printf("Informe o novo salário do funcionário: ");
+        scanf("%f", &salario);
+
+        vetSalario[i] = salario;
+
+        printf("\nFuncionário atualizado com sucesso!\n");
+      }
+    } else {
+      printf("\nDados inválidos para o funcionário informado!\n");
+    }
+  }
+}
+
+int pesquisaSalario(float vet[], int tam, float x) {
+  int i, achou = 0;
+
+  for (i = 0; i < tam; i++) {
+    if (vet[i] == x) {
+      achou = 1;
+
+      break;
+    }
+  }
+
+  if (achou == 1) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+int pesquisaIdade(int vet[], int tam, int x) {
+  int i, achou = 0;
+
+  for (i = 0; i < tam; i++) {
+    if (vet[i] == x) {
+      achou = 1;
+
+      break;
+    }
+  }
+
+  if (achou == 1) {
+    return 1;
+  } else {
+    return 0;
+  }
 }

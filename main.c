@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "./include/pesquisa.h"
-#define SIZE 4
+#define SIZE 1
 
 int main() {
   char nome[SIZE][100], CPF[SIZE][14]; // matrizes de strings
@@ -20,7 +20,15 @@ int main() {
       break;
 
     case 2:
-      bubble(nome, SIZE);
+      printf("Bubble sort (0) ou quicksort (1)? ");
+      scanf("%d", &opcao);
+
+      if (opcao == 0) {
+        bubble(nome, SIZE);
+      } else {
+        quick(nome, SIZE);
+      }
+
       consultarFuncionariosPorNome(nome);
       break;
 
@@ -42,10 +50,14 @@ int main() {
       break;
 
     case 4:
-      // atualizarFuncionario();
+      atualizarFuncionario(nome, CPF, idade, salario);
       break;
 
     case 5:
+      consultarFuncionarios(nome, CPF, idade, salario);
+      break;
+
+    case 6:
       printf("Fim das operações\n");
       break;
 
@@ -53,12 +65,7 @@ int main() {
       printf("Opção inválida\n");
       break;
     }
-  } while (op != 5);
-  // cadastrarFuncionario(nome, CPF, idade, salario);
-
-  // printf("\n\n");
-
-  // consultarFuncionarios(nome, CPF, idade, salario);
+  } while (op != 6);
 
   return 0;
 }

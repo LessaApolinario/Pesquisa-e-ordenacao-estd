@@ -10,7 +10,7 @@ int bubble(char vetNome[][100], int tam);
 
 int busca(int vet[], int tam, int x);
 
-void quick(int v[], int tam);
+void quick(char vetNome[][100], int tam);
 
 int pesquisa(int vet[], int tam, int x);
 
@@ -25,3 +25,9 @@ void consultarFuncionariosPorNome(char vetNome[][100]);
 int consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[]);
 
 int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]);
+
+void atualizarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
+
+int pesquisaSalario(float vet[], int tam, float x);
+
+int pesquisaIdade(int vet[], int tam, int x);
