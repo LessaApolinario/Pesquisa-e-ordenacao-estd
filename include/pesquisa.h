@@ -8,12 +8,6 @@ typedef struct funcionario Func;
 
 int bubble(char vetNome[][100], int tam);
 
-int busca(int vet[], int tam, int x);
-
-void quick(char vetNome[][100], int tam);
-
-int pesquisa(int vet[], int tam, int x);
-
 void menu();
 
 void cadastrarFuncionario(char vetNome[][100], char vetCPF[][50], int vetIdade[], float vetSalario[]);

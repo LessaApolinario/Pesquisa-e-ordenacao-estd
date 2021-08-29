@@ -20,15 +20,7 @@ int main() {
       break;
 
     case 2:
-      printf("Bubble sort (0) ou quicksort (1)? ");
-      scanf("%d", &opcao);
-
-      if (opcao == 0) {
-        bubble(nome, SIZE);
-      } else {
-        quick(nome, SIZE);
-      }
-
+      bubble(nome, SIZE);
       consultarFuncionariosPorNome(nome);
       break;
 
