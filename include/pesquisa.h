@@ -16,17 +16,17 @@ int pesquisa(int vet[], int tam, int x);
 
 void menu();
 
-void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
+void cadastrarFuncionario(char vetNome[][100], char vetCPF[][50], int vetIdade[], float vetSalario[]);
 
-void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
+void consultarFuncionarios(char vetNome[][100], char vetCPF[][50], int vetIdade[], float vetSalario[]);
 
 void consultarFuncionariosPorNome(char vetNome[][100]);
 
-int consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[]);
+int consultarFuncionariosPorCPFSequencial(char vetCPF[][50], int tam, char CPF[]);
 
-int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]);
+int consultarFuncionariosPorCPFBinaria(char vetCPF[][50], int tam, char CPF[]);
 
-void atualizarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]);
+void atualizarFuncionario(char vetNome[][100], char vetCPF[][50], int vetIdade[], float vetSalario[]);
 
 int pesquisaSalario(float vet[], int tam, float x);
 

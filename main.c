@@ -3,12 +3,12 @@
 #define SIZE 1
 
 int main() {
-  char nome[SIZE][100], CPF[SIZE][14]; // matrizes de strings
+  char nome[SIZE][100], CPF[SIZE][50]; // matrizes de strings
   int idade[SIZE]; // vetor de idades
   float salario[SIZE]; // vetor de salários
   int i, op;
   int opcao;
-  char cpfCliente[14]; // cpf a ser pesquisado
+  char cpfCliente[50]; // cpf a ser pesquisado
 
   do {
     menu();

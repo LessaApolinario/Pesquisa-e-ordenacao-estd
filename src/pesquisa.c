@@ -110,7 +110,7 @@ void menu() {
   printf("| 6 - Sair\n");
 }
 
-void cadastrarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
+void cadastrarFuncionario(char vetNome[][100], char vetCPF[][50], int vetIdade[], float vetSalario[]) {
   int i;
   Func *f = (Func *)malloc(sizeof(Func));
 
@@ -145,7 +145,7 @@ void consultarFuncionariosPorNome(char vetNome[][100]) {
   }
 }
 
-void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
+void consultarFuncionarios(char vetNome[][100], char vetCPF[][50], int vetIdade[], float vetSalario[]) {
   int i;
 
   for (i = 0; i < SIZE; i++) {
@@ -158,7 +158,7 @@ void consultarFuncionarios(char vetNome[][100], char vetCPF[][14], int vetIdade[
   }
 }
 
-int consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[14]) {
+int consultarFuncionariosPorCPFSequencial(char vetCPF[][50], int tam, char CPF[14]) {
   int i;
 
   for (i = 0; i < tam; i++) {
@@ -171,7 +171,7 @@ int consultarFuncionariosPorCPFSequencial(char vetCPF[][14], int tam, char CPF[1
   return -1;
 }
 
-int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]) {
+int consultarFuncionariosPorCPFBinaria(char vetCPF[][50], int tam, char CPF[]) {
   int inicio, fim, meio;
 
   inicio = 0;
@@ -196,7 +196,7 @@ int consultarFuncionariosPorCPFBinaria(char vetCPF[][14], int tam, char CPF[]) {
   return -1;
 }
 
-void atualizarFuncionario(char vetNome[][100], char vetCPF[][14], int vetIdade[], float vetSalario[]) {
+void atualizarFuncionario(char vetNome[][100], char vetCPF[][50], int vetIdade[], float vetSalario[]) {
   char nome[100], CPF[14];
   int idade;
   float salario;
